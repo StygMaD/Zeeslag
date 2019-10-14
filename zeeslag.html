@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<style>
+    td,
+    th {
+        position: relative;
+        border: 2px solid black;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+    }
+
+    td:hover {
+        background-color: black;
+    }
+</style>
+<script>
+
+
+
+    // var zee = {};
+    // zee.geklikt = true;
+
+
+    // // boot1 = arrayNaam[1],arrayNaam[2]+[3]
+    // var boot = {};
+    // boot.geraakt = false;
+    // boot.gezonken = false;
+
+    // console.log(boot.geraakt);
+
+    // // boot contruct aan array koppelen 
+ 
+   
+    function randomBoot(){ 
+
+    //lengte van de boot zou ook random kunnen 2-5 bijv, maar ik gebruik voor nu vaste lengte van 4
+    //boot zou ook verticaal kunnen, maar werkt nu alleen in horizontale richting
+    
+    var x = Math.floor(Math.random() * 3); // welke rij boot1 komt 0-2
+    var y = Math.floor((Math.random() * 3) +3); // welke rij boot2 komt 3-5
+
+    var x1 = Math.floor(Math.random() * 4); //welke plek komt boot1 deze horizontaal x
+    var y1 = Math.floor(Math.random() * 4);  //welke plek komt boot2 horizontaal y
+
+   // kan hieronder nog for loop van maken  
+   waardeArrayEen = (x*7) + x1; //kijken welke rij in array en dan optellen binnen rij
+   arrayZeeSlag[waardeArrayEen] = 1;
+   console.log(waardeArrayEen);
+   waardeArrayEen++;
+   arrayZeeSlag[waardeArrayEen] = 1;
+   waardeArrayEen++;
+   arrayZeeSlag[waardeArrayEen] = 1;
+   waardeArrayEen++;
+   arrayZeeSlag[waardeArrayEen] = 1;
+
+   waardeArrayTwee = (y*7) + y1; 
+   arrayZeeSlag[waardeArrayTwee] = 1;
+   console.log(waardeArrayTwee);
+   waardeArrayTwee++;
+   arrayZeeSlag[waardeArrayTwee] = 1;
+   waardeArrayTwee++;
+   arrayZeeSlag[waardeArrayTwee] = 1;
+   waardeArrayTwee++;
+   arrayZeeSlag[waardeArrayTwee] = 1;
+
+    }
+
+    var arrayZeeSlag = [0, 0, 0, 0, 0, 0, 0, //rij 0 -x
+                        0, 0, 0, 0, 0, 0, 0, //rij 1 -x
+                        0, 0, 0, 0, 0, 0, 0, //rij 2 -x
+                        0, 0, 0, 0, 0, 0, 0, //rij 3 -y
+                        0, 0, 0, 0, 0, 0, 0, //rij 4 -y
+                        0, 0, 0, 0, 0, 0, 0  //rij 5 -y
+                        ];
+
+    var arrayZeeSlagPush = [];
+
+
+    function klikken(a) {
+        // alert(a);
+        b = 1;
+          if (arrayZeeSlag[a] == 1) {
+            alert("geraakt");
+            document.getElementById(a).innerHTML = "B"; // dit veranderen naar object
+            document.getElementById(a).style.backgroundColor = "rgb(255, 0, 0)"; 
+            arrayZeeSlagPush.push(1);
+            console.log(arrayZeeSlagPush);
+            gewonnenCheck();
+            // zou nog waardeArrayEen kunnen toevoegen zodat je per boot ook de gezonken status krijgt
+        }
+        else {
+            console.log(a);
+            //alert("mis");
+            document.getElementById(a).innerHTML = "W";
+            document.getElementById(a).style.backgroundColor = "rgb(0,191,255"; 
+        }
+
+
+        function gewonnenCheck(){
+        var boten = 8; // zijn nu 2 boten van lengte 4, dit zou ook random kunnen nog
+        console.log(arrayZeeSlagPush.length)
+        if(arrayZeeSlagPush.length == boten){
+            alert("gewonnen!");
+
+        }
+        
+        
+        }
+        }
+    
+
+    // ------------------------- dynamische tabel///
+
+    // class Voorbeeld {
+    //     woord;
+    //     definitie;
+    //     constructor(Woord, Definitie) { // zo maken dat de hoeveelheid strings zelf in te vullen zijn via een getal
+    //         this.woord = Woord;
+    //         this.definitie = Definitie;
+    //     }
+    // }
+
+
+
+    // voorbeelden = [];
+    // voorbeelden[0] = new Voorbeeld("&nbsp;&nbsp;", "&nbsp;&nbsp;");
+    // voorbeelden[1] = new Voorbeeld("&nbsp;&nbsp;", "&nbsp;&nbsp;");
+    // voorbeelden[2] = new Voorbeeld("&nbsp;&nbsp;", "&nbsp;&nbsp;");
+
+    // function lijstMaken() {
+
+    //     var tableHeaderRowCount = 1;
+    //     var table = document.getElementById("tabelwoorden");
+    //     var rowCount = table.rows.length;
+    //     for (var i = 1; i < rowCount; i++) {
+    //         table.deleteRow(tableHeaderRowCount);
+    //     }
+
+    //     var rows = voorbeelden;
+    //     var html = document.getElementById("tabelwoorden").innerHTML;
+    //     for (var i = 0; i < rows.length; i++) {
+    //         html += "<tr>";
+    //         html += "<td>" + rows[i].woord + "</td>";
+    //         html += "<td>" + rows[i].definitie + "</td>";
+    //         html += "</tr>";
+    //     }
+    //     document.getElementById("tabelwoorden").innerHTML = html;
+    // }
+
+// ------------------------- dynamische tabel///
+
+</script>
+
+<!-- <body onload="lijstMaken()"> -->
+<body>    
+    <table>
+        <tr>
+            <td id="0" onclick="klikken(id)"></td>
+            <td id="1" onclick="klikken(id)"> </td>
+            <td id="2" onclick="klikken(id)"></td>
+            <td id="3" onclick="klikken(id)"></td>
+            <td id="4" onclick="klikken(id)"></td>
+            <td id="5" onclick="klikken(id)"></td>
+            <td id="6" onclick="klikken(id)"></td>
+        </tr>
+        <tr>
+            <td id="7" onclick="klikken(id)"></td>
+            <td id="8" onclick="klikken(id)"> </td>
+            <td id="9" onclick="klikken(id)"></td>
+            <td id="10" onclick="klikken(id)"></td>
+            <td id="11" onclick="klikken(id)"></td>
+            <td id="12" onclick="klikken(id)"></td>
+            <td id="13" onclick="klikken(id)"></td>
+        </tr>
+        <tr>
+            <td id="14" onclick="klikken(id)"></td>
+            <td id="15" onclick="klikken(id)"></td>
+            <td id="16" onclick="klikken(id)"></td>
+            <td id="17" onclick="klikken(id)"></td>
+            <td id="18" onclick="klikken(id)"></td>
+            <td id="19" onclick="klikken(id)"></td>
+            <td id="20" onclick="klikken(id)"></td>
+        </tr>
+        <tr>
+            <td id="21" onclick="klikken(id)"></td>
+            <td id="22" onclick="klikken(id)"></td>
+            <td id="23" onclick="klikken(id)"></td>
+            <td id="24" onclick="klikken(id)"></td>
+            <td id="25" onclick="klikken(id)"></td>
+            <td id="26" onclick="klikken(id)"></td>
+            <td id="27" onclick="klikken(id)"></td>
+        </tr>
+        <tr>
+            <td id="28" onclick="klikken(id)"></td>
+            <td id="29" onclick="klikken(id)"></td>
+            <td id="30" onclick="klikken(id)"></td>
+            <td id="31" onclick="klikken(id)"></td>
+            <td id="32" onclick="klikken(id)"></td>
+            <td id="33" onclick="klikken(id)"></td>
+            <td id="34" onclick="klikken(id)"></td>
+        </tr>
+        <tr>
+            <td id="35" onclick="klikken(id)"></td>
+            <td id="36" onclick="klikken(id)"></td>
+            <td id="37" onclick="klikken(id)"></td>
+            <td id="38" onclick="klikken(id)"></td>
+            <td id="39" onclick="klikken(id)"></td>
+            <td id="40" onclick="klikken(id)"></td>
+            <td id="41" onclick="klikken(id)"></td>
+        </tr>
+    </table>
+    <br>
+    Druk eerst op de knop om de boten willekeurig te plaatsen, daarna kan het spel beginnen!
+    <br><br>
+    <button onclick="randomBoot()">Boten plaatsen</button>
+
+    <!-- dynamische tabel -->
+    <!-- <div class="container">
+        <div class="lijst">
+            <h1>Woorden</h1>
+            <table id="tabelwoorden">
+                <tr>
+                    <th>A</th>
+                    <th>B</th>
+
+                </tr>
+            </table>
+        </div> -->
+        <!-- dynamische tabel -->
+    </div>
+
+
+
+
+</body>
+
+</html>
